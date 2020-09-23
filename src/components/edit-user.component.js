@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const User = props => (
     <tr>
         <td>{props.user.username}</td>
         <td>
-            <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>delete</a>
+           <Link to={"/update/"+props.user._id}>edit</Link> | <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>delete</a>
+            {/* <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>delete</a> */}
         </td>
     </tr>
 )
@@ -47,7 +49,7 @@ export default class UsersList extends Component {
       render() {
         return (
           <div>
-            <h3>Ingressos Vendidos</h3>
+            <h3>Filmes cadastrados</h3>
             <table className="table">
               <thead className="thead-light">
                 <tr>

@@ -19,7 +19,25 @@ router.route('/add').post((req, res) => {
 
 router.route('/:id').delete((req, res) => {
   User.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Exercise deleted.'))
+    .then(() => res.json('User deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      user.username = req.body.username;
+
+      user.save()
+        .then(() => res.json('User updated!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/:id').get((req, res) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 

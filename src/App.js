@@ -8,6 +8,7 @@ import EditExercise from "./components/edit-exercise.component";
 import CreateExercise from "./components/create-exercise.component";
 import CreateUser from "./components/create-user.component";
 import EditUser from "./components/edit-user.component";
+import UpdateUser from "./components/update-user.component"
 
 function App() {
   return (
@@ -16,11 +17,12 @@ function App() {
       <Navbar />
       <div className="container">
       <br/>
-      <Route path="/" exact component={ExercisesList} />
-      <Route path="/edit/:id" component={EditExercise} />
-      <Route path="/create" component={CreateExercise} />
+      <Route path="/" exact component={CreateUser} />
+      {/* <Route path="/edit/:id" component={EditExercise} /> */}
+      {/* <Route path="/create" component={CreateExercise} /> */}
       <Route path="/user" component={CreateUser} />
       <Route path="/del" component={EditUser} />
+      {/* <Route path="/update" component={UpdateUser} /> */}
       </div>
     </Router>
   );
