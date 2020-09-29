@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 const User = props => (
     <tr>
         <td>{props.user.username}</td>
+        <td>{props.user.desc}</td>
         <td>
            <Link to={"/update/"+props.user._id}>edit</Link> | <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>delete</a>
             {/* <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>delete</a> */}
+            {console.log(props.user._id)}
         </td>
     </tr>
 )
@@ -54,6 +56,8 @@ export default class UsersList extends Component {
               <thead className="thead-light">
                 <tr>
                   <th>Filme</th>
+                  <th>Descrição</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>

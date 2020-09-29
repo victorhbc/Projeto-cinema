@@ -6,10 +6,12 @@ export default class CreateUser extends Component {
     super(props);
 
     this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeDesc = this.onChangeDesc.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: ''
+      username: '',
+      desc: ''
     }
   }
 
@@ -19,11 +21,18 @@ export default class CreateUser extends Component {
     })
   }
 
+  onChangeDesc(e) {
+    this.setState({
+      desc: e.target.value
+    })
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
     const user = {
-      username: this.state.username
+      username: this.state.username,
+      desc: this.state.desc
     }
 
     console.log(user);
@@ -32,7 +41,8 @@ export default class CreateUser extends Component {
       .then(res => console.log(res.data));
 
     this.setState({
-      username: ''
+      username: '',
+      desc: ''
     })
   }
 
@@ -48,6 +58,12 @@ export default class CreateUser extends Component {
                 className="form-control"
                 value={this.state.username}
                 onChange={this.onChangeUsername}
+                />
+            <label>Descrição do Filme: </label>
+            <input  type="text"
+                className="form-control"
+                value={this.state.desc}
+                onChange={this.onChangeDesc}
                 />
           </div>
           <div className="form-group">
