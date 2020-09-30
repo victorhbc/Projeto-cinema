@@ -35,7 +35,7 @@ export default class CreateUser extends Component {
       desc: this.state.desc
     }
 
-    console.log(user);
+    // console.log(user);
 
     axios.post('http://localhost:5000/users/add', user)
       .then(res => console.log(res.data));
@@ -44,6 +44,8 @@ export default class CreateUser extends Component {
       username: '',
       desc: ''
     })
+
+    window.location = "/del"
   }
 
   render() {

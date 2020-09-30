@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class EditUser extends Component {
+export default class UpdateUser extends Component {
   constructor(props) {
     super(props);
     console.log(this.props.location.pathname.slice(8,this.props.location.pathname.length));
@@ -29,25 +29,13 @@ export default class EditUser extends Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/users/')
-      .then(response => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map(user => user.username),
-          })
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
   }
 
   onChangeUsername(e) {
     this.setState({
       username: e.target.value
     })
-    console.log(e.target.value);
+    // console.log(e.target.value);
   }
 
   onChangeDesc(e) {
@@ -56,20 +44,24 @@ export default class EditUser extends Component {
     })
   }
 
-  onSubmit(e) {
-    e.preventDefault();
+  handleSubmit = (event) => {
+    event.preventDefault()
 
-    // console.log(this);
+    // console.log(event.target.username.value)
+    // console.log(event.target.desc.value)
 
-    // const user = {
-    //   username: this.state.username,
-    //   desc: this.state.desc,
-    // }
+    const user = {
+      username: event.target.username.value,
+      desc: event.target.desc.value,
+    }
 
-    // console.log(user);
+    console.log(user);
 
-    // axios.post('http://localhost:5000/users/update/' + this.props.location.pathname.slice(8,this.props.location.pathname.length), user)
-    //   .then(res => console.log(res.data));
+    axios.post('http://localhost:5000/users/update/' + this.props.location.pathname.slice(8,this.props.location.pathname.length), user)
+      .then(res => console.log(res.data));
+
+
+    console.log(this.props.location.pathname.slice(8,this.props.location.pathname.length));
 
     window.location = '/del';
   }
@@ -77,31 +69,36 @@ export default class EditUser extends Component {
   render() {
     return (
       <div>
-<h3>Edit Exercise Log</h3>
-<form onSubmit={this.onSubmit}>
-  <div className="form-group"> 
-    <label>Número de ingressos: </label>
-    <input  type="text"
-        ref="userInput"
-        required
+  <h3>Editar ingresso </h3>
+  <form onSubmit={this.handleSubmit}>
+    <div className="form-group"> 
+      <label>Nome: </label>
+      <input
+        type="text"
+        name="username"
         className="form-control"
         value={this.state.username}
         onChange={this.onChangeUsername}
+        ref={node => (this.inputNode = node)}
         />
-  </div>
-  <div className="form-group">
-    <label>Sessão: </label>
+    </div>
+    <div className="form-group">
+    <label>Descrição: </label>
     <input 
-        type="text" 
-        className="form-control"
-        value={this.state.desc}
-        onChange={this.onChangeDesc}
+      type="text"
+      name="desc"
+      className="form-control"
+      value={this.state.desc}
+      onChange={this.onChangeDesc}
+      ref={node => (this.inputNode = node)}
         />
-  </div>
-  <div className="form-group">
-    <input type="submit" value="Editar ingresso" className="btn btn-primary" />
-  </div>
-</form>
+    </div>
+    
+    <div className="form-group">
+      <button type="submit" className="btn btn-primary">Atualizar</button>
+    </div>
+
+  </form>
 </div>
     )
   }
