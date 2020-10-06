@@ -7,7 +7,7 @@ const User = props => (
         <td>{props.user.username}</td>
         <td>{props.user.desc}</td>
         <td>
-           <Link to={"/update/"+props.user._id}>edit</Link> | <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>delete</a>
+           <Link to={"/update/"+props.user._id}>Editar</Link> | <a href="#" onClick={() => { props.deleteUser(props.user._id) }}>Deletar</a>
         </td>
     </tr>
 )
