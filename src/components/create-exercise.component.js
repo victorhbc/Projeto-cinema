@@ -15,8 +15,8 @@ export default class CreateExercise extends Component {
 
     this.state = {
       username: '',
-      description: '',
-      duration: 0,
+      description: 1,
+      duration: 'Manhã',
       date: new Date(),
       users: []
     }
@@ -104,21 +104,26 @@ export default class CreateExercise extends Component {
         </div>
         <div className="form-group"> 
           <label>Número de ingressos: </label>
-          <input  type="text"
-              required
-              className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
-              />
+            <select className="form-control" value={this.state.description} onChange={this.onChangeDescription}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
         </div>
         <div className="form-group">
           <label>Sessão: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
-              />
+            <select className="form-control" value={this.state.duration} onChange={this.onChangeDuration}>
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+            </select>
         </div>
         <div className="form-group">
           <label>Data: </label>
