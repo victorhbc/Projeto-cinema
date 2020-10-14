@@ -102,9 +102,9 @@ export default class CreateExercise extends Component {
               }
           </select>
         </div>
-        <div className="form-group"> 
-          <label>Número de ingressos: </label>
-            <select className="form-control" value={this.state.description} onChange={this.onChangeDescription}>
+        <div className="form-group"  >         
+          <label style={{ width: '15%' }} >Número de ingressos: </label>
+            <select className="form-control" value={this.state.description} onChange={this.onChangeDescription} style={{ width: '15%' }}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -117,9 +117,9 @@ export default class CreateExercise extends Component {
               <option value="10">10</option>
             </select>
         </div>
-        <div className="form-group">
-          <label>Sessão: </label>
-            <select className="form-control" value={this.state.duration} onChange={this.onChangeDuration}>
+        <div className="form-group" >
+          <label style={{ width: '15%' }}>Sessão: </label>
+            <select className="form-control" value={this.state.duration} onChange={this.onChangeDuration} style={{ width: '15%' }}>
               <option value="Manhã">Manhã</option>
               <option value="Tarde">Tarde</option>
               <option value="Noite">Noite</option>
